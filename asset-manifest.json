@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/sem3/static/css/main.e086c10a.css",
+    "main.js": "/sem3/static/js/main.fbb02b41.js",
+    "static/media/NamA.jpg": "/sem3/static/media/NamA.e21126ccc0449e0dee75.jpg",
+    "static/media/cv2.jpg": "/sem3/static/media/cv2.1ebb87c4e72890560019.jpg",
+    "static/media/personal.jpg": "/sem3/static/media/personal.45f21a9622c795bc4255.jpg",
+    "static/media/groupteam2.jpg": "/sem3/static/media/groupteam2.77623b08035a2d0b22c9.jpg",
+    "static/media/Asp.jpg": "/sem3/static/media/Asp.5088203c45cea8881973.jpg",
+    "static/media/cv1.jpg": "/sem3/static/media/cv1.146008adc3fc86b8d5ec.jpg",
+    "static/media/blog.jpg": "/sem3/static/media/blog.32acbfaa5434b7481d99.jpg",
+    "static/media/Node.jpg": "/sem3/static/media/Node.abbfcf0dcc4baf4e13d0.jpg",
+    "static/media/Acb.jpg": "/sem3/static/media/Acb.038fef976801998812b6.jpg",
+    "static/media/DataAnalytics.jpg": "/sem3/static/media/DataAnalytics.9b8d8418df496103a3df.jpg",
+    "static/media/python.jpg": "/sem3/static/media/python.e6559fecb0013ddd25fb.jpg",
+    "static/media/laravel.jpg": "/sem3/static/media/laravel.1f4fafc1fcec07b647b2.jpg",
+    "static/media/Fresher.jpg": "/sem3/static/media/Fresher.208d9224f8f67342212a.jpg",
+    "static/media/C++.jpg": "/sem3/static/media/C++.c44c49475a8bb56b17bc.jpg",
+    "static/media/JavaScript.jpg": "/sem3/static/media/JavaScript.aa8d3bed12041eed06f3.jpg",
+    "index.html": "/sem3/index.html",
+    "main.e086c10a.css.map": "/sem3/static/css/main.e086c10a.css.map",
+    "main.fbb02b41.js.map": "/sem3/static/js/main.fbb02b41.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e086c10a.css",
+    "static/js/main.fbb02b41.js"
+  ]
+}
