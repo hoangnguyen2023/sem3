@@ -46,6 +46,7 @@ root.render(
         <Route path='blog' element={<Blog />}></Route>
         <Route path='BlogDetail' element={<BlogDetail />}></Route>
         <Route path='formcv' element={<FormCV />}></Route>
+        <Route path='admin' element={<AdminTemplates/>}></Route>
 
 
 
@@ -54,7 +55,6 @@ root.render(
         <Route path='vacacies' element={<Vacancies />}></Route>
         <Route path='adminblog' element={<AdminBlog />}></Route>
         <Route path='Employee'element={<AdminEmployee/>}></Route>
-
 
       </Route>
     </Routes>

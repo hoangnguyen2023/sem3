@@ -101,6 +101,9 @@ const Header = () => {
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="blog">Blog</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="admin">Admin</NavLink>
+                        </li>
 
                     </ul>
                     <form className="d-flex my-2 my-lg-0 px-3">
