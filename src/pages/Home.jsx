@@ -10,15 +10,15 @@ import Job from '../pages/Job'
 const Home = () => {
   return (
     <div>
-      <Banner/>
+      <Banner />
       <Find />
-     <Job/>
+      <Job />
       <CreateCV />
       <Customer />
-      <PopularCompany/>
+      <PopularCompany />
       <Jobnew />
-      
-   
+
+
 
 
 

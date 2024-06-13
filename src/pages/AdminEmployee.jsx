@@ -19,25 +19,40 @@ const AdminEmployee = () => {
                             {/* Modal body */}
                             <div className="modal-body">
                                 <form action="">
-                                    <label className="EmployeeId">EmployeeId</label>
-                                    <input type="text" className='form-control' id="EmployeeId" name='EmployeeId' />
+
                                     <label className="DeparmentNumber">DeparmentNumber</label>
-                                    <input type="text" className='form-control' id="DeparmentNumber" name='DeparmentNumber' />
-                                    <label className="Role">Role Number</label>
-                                    <input type="text" className='form-control' id="Role" name='Role' />
-                                    <label className="Image">Image</label>
-                                    <input type="file" className='form-control' id="Image" name='Image' />
-                                    <label className="createdate">Password</label>
-                                    <input type="text" className='form-control' id="Password" name='Password' />
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Department</option>
+                                        <option value="1">IT</option>
+                                        <option value="2">HR</option>
+                                        <option value="3">Marketing</option>
+                                    </select>
+                                    <label className="Role">Role</label>
+                                    <div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="Role" id="Admin" />
+                                            <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                Admin
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="Role" id="Manager" defaultChecked />
+                                            <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                Manager
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="Role" id="Employee" defaultChecked />
+                                            <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                Employee
+                                            </label>
+                                        </div>
+                                    </div>                                   
                                     <label className="Fullname">Fullname</label>
                                     <input type="text" className='form-control' id="Fullname" name='Fullname' />
                                     <label className="Email">Email</label>
                                     <input type="email" className='form-control' id="Email" name='Email' />
-                                    <label className="createdate">Create Date</label>
-                                    <input type="date" className='form-control' id="CreateDate" name='CreateDate' />
-                                    <label className="enddate">End Date</label>
-                                    <input type="date" className='form-control' id="enddate" name='enddate' />
-
+                                   
                                 </form>
                             </div>
                             {/* Modal footer */}
@@ -52,32 +67,32 @@ const AdminEmployee = () => {
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">EmployeeId</th>
-                        <th scope="col">DeparmentNumber</th>
+                        <th scope="col">Employee Number</th>
+                        <th scope="col">Deparment Number</th>
                         <th scope="col">Role Number</th>
                         <th scope="col">Image</th>
-                        <th scope="col">HashPassword</th>
+                       
                         <th scope="col">Fullname</th>
                         <th scope="col">Email</th>
                         <th scope="col">Create Date</th>
-                        <th scope="col">EndDate</th>
+                        <th scope="col">Edit Date</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row">VG-xxxx</th>
                         <td>Mark</td>
                         <td>Admin</td>
                         <td>@mdo</td>
-                        <td>Mark</td>
+                 
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>Mark</td>
 
                         <td>
-                            <button className='btn btn-success '>Delete</button>
+                            <button className='btn btn-success ' >Active</button>
                             <button className='btn btn-danger'>Edit</button>
 
                         </td>

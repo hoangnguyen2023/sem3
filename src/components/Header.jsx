@@ -15,6 +15,9 @@ const Header = () => {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+    const [employeeNumber,setemployeeNumber]=useState('');
+    const [hashPassword,sethashPassword]=useState('');
+    
     return (
         <div>
 
@@ -35,22 +38,17 @@ const Header = () => {
                                 <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Please Login to continue using our services</Form.Label>
 
-                                    <Button className=''> Continute with Google Account</Button>
+                                    <Button className=''><i class="fa-brands fa-google " style={{color:"white"}}></i> Continute with Google Account</Button>
 
 
                                 </Form.Group>
-                                <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInput1">
-
-
-                                    <Button> Continute with Facebook Account</Button>
-
-
-                                </Form.Group>
+                               
                             </Tab>
                             <Tab eventKey="Employee" title="Employee">
                                 <Form.Group
                                     className="mb-3"
                                     controlId="exampleForm.ControlTextarea1"
+                                    onSubmit={}
                                 >
                                     <Form.Label>Employee Number</Form.Label>
                                     <Form.Control

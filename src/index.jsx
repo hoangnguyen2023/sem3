@@ -18,6 +18,8 @@ import FormCV from './pages/FormCV';
 import Vacancies from './pages/Vacancies';
 import AdminBlog from './pages/AdminBlog';
 import AdminEmployee from './pages/AdminEmployee';
+import JobOverview from './pages/JobOverview';
+
 
 
 
@@ -46,17 +48,16 @@ root.render(
         <Route path='blog' element={<Blog />}></Route>
         <Route path='BlogDetail' element={<BlogDetail />}></Route>
         <Route path='formcv' element={<FormCV />}></Route>
-        <Route path='admin' element={<AdminTemplates/>}></Route>
-
-
-
+        <Route path='admin' element={<AdminTemplates />}></Route>
+        <Route path='jobview' element={<JobOverview />}></Route>
       </Route>
       <Route path='admintemplates' element={<AdminTemplates />}>
         <Route path='vacacies' element={<Vacancies />}></Route>
         <Route path='adminblog' element={<AdminBlog />}></Route>
-        <Route path='Employee'element={<AdminEmployee/>}></Route>
+        <Route path='Employee' element={<AdminEmployee />}></Route>
 
       </Route>
+
     </Routes>
 
   </BrowserRouter>

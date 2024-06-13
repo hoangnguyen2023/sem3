@@ -5,6 +5,8 @@ import c from '../images/C++.jpg'
 import laravel from '../images/laravel.jpg'
 import node from '../images/Node.jpg'
 import python from '../images/python.jpg'
+import { NavLink } from 'react-router-dom'
+
 
 
 const Job = () => {
@@ -21,7 +23,7 @@ const Job = () => {
                                 <h5 className="card-title">Card title</h5>
                                 <p className='card-text'>Price : <span>15$</span></p>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <button className="btn btn-danger ">Supply Now</button>
+                               <NavLink to="/jobview">Supply Now</NavLink>
                             </div>
                         </div>
 
