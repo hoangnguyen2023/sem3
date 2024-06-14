@@ -15,8 +15,8 @@ const Header = () => {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
-    const [employeeNumber,setemployeeNumber]=useState('');
-    const [hashPassword,sethashPassword]=useState('');
+    // const [employeeNumber,setemployeeNumber]=useState('');
+    // const [hashPassword,sethashPassword]=useState('');
     
     return (
         <div>
@@ -48,7 +48,7 @@ const Header = () => {
                                 <Form.Group
                                     className="mb-3"
                                     controlId="exampleForm.ControlTextarea1"
-                                    onSubmit={}
+                                
                                 >
                                     <Form.Label>Employee Number</Form.Label>
                                     <Form.Control

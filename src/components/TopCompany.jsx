@@ -2,7 +2,7 @@ import React from 'react'
 import acb from '../images/Acb.jpg'
 import nama from '../images/NamA.jpg'
 
-const PopularCompany = () => {
+const TopCompany = () => {
     return (
         <div className='container-fluid m-5'>
             <h4 className='text-center m-5'>Popular Company</h4>
@@ -162,4 +162,4 @@ const PopularCompany = () => {
     )
 }
 
-export default PopularCompany
+export default TopCompany
