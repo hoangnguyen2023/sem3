@@ -57,8 +57,8 @@ const data = [
 const Customer = () => {
     const ref = React.useRef(StackedCarousel);
     return (
-        <div className='container-fluid'>
-            <h4 className='text-center'> Top Company</h4>
+        <div className='container-fluid my-5'>
+            <h4 className='text-center my-5'> Top Company</h4>
             <div className="card">
                 <div style={{ width: "100%", position: "relative" }}>
                     <ResponsiveContainer
