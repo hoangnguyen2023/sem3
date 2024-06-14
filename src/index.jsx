@@ -20,6 +20,8 @@ import AdminBlog from './pages/AdminBlog';
 import AdminEmployee from './pages/AdminEmployee';
 import JobOverview from './pages/JobOverview';
 import PopularCompany from './pages/PopularCompany';
+import Discovery from './pages/Discovery';
+
 
 
 
@@ -51,7 +53,9 @@ root.render(
         <Route path='formcv' element={<FormCV />}></Route>
         <Route path='admin' element={<AdminTemplates />}></Route>
         <Route path='jobview' element={<JobOverview />}></Route>
-        <Route path='popularCompany' element={<PopularCompany/>}></Route>
+        <Route path='popularCompany' element={<PopularCompany />}></Route>
+        <Route path='discover' element={<Discovery />}></Route>
+
       </Route>
       <Route path='admintemplates' element={<AdminTemplates />}>
         <Route path='vacacies' element={<Vacancies />}></Route>

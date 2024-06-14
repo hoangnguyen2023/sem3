@@ -35,7 +35,7 @@ const CreateCV = () => {
                         <div className="card-body">
                             <h5 className="card-title">Fresher Job</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <button className='btn btn-outline-success'><NavLink to="#" style={{ textDecoration: 'none', color: 'black' }}> Discover</NavLink></button>
+                            <button className='btn btn-outline-success'><NavLink to="/discover" style={{ textDecoration: 'none', color: 'black' }}> Discover</NavLink></button>
                         </div>
                     </div>
                     <div className="card col-lg-3 col-md-3 col-sm-4" >
