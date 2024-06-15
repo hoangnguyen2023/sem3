@@ -3,9 +3,23 @@ import asp from '../images/Asp.jpg'
 import php from '../images/C++.jpg'
 import laravel from '../images/laravel.jpg'
 import { NavLink } from 'react-router-dom'
-
+import axios from 'axios'
 
 const BlogAsp = () => {
+    console.log("hhhhhhhhhhhhhhhhhhhhh")
+    const [data , setdata] = React.useState(null);
+    React.useEffect (()=>{
+        const fetchData = async () => {
+            try{
+                const response = await axios.get("https://localhost:7144/api/Blog")
+                console.log(response)
+                setdata(response.data)
+            }
+            catch (error){
+                console.error("Error fectching data : " ,error)
+            }
+        }
+    },[])
     return (
         <div>
             <div className="card-group mt-5">

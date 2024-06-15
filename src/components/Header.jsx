@@ -1,88 +1,19 @@
-import { useState } from 'react'
+
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+
 
 
 
 
 
 const Header = () => {
-    const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
-    // const [employeeNumber,setemployeeNumber]=useState('');
-    // const [hashPassword,sethashPassword]=useState('');
-    
+  
+
     return (
         <div>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Sign in </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Label >Link your account to continue using ACB's services</Form.Label>
-                        <Tabs
-                            defaultActiveKey="profile"
-                            id="justify-tab-example"
-                            className="mb-3"
-                            justify
-                        >
-                            <Tab eventKey="applicants" title="applicants">
-                                <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInput1">
-                                    <Form.Label>Please Login to continue using our services</Form.Label>
-
-                                    <Button className=''><i class="fa-brands fa-google " style={{color:"white"}}></i> Continute with Google Account</Button>
-
-
-                                </Form.Group>
-                               
-                            </Tab>
-                            <Tab eventKey="Employee" title="Employee">
-                                <Form.Group
-                                    className="mb-3"
-                                    controlId="exampleForm.ControlTextarea1"
-                                
-                                >
-                                    <Form.Label>Employee Number</Form.Label>
-                                    <Form.Control
-
-                                        type='text'
-                                        placeholder='VG-xxxx'
-
-                                    />
-
-                                    <Form.Label>PassWord</Form.Label>
-                                    <Form.Control
-                                        type="password"
-                                        placeholder="password"
-
-                                    />
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                        <Button variant="primary" onClick={handleClose}>
-                                            Sign in
-                                        </Button>
-                                    </Modal.Footer>
-
-
-                                </Form.Group>
-                            </Tab>
-                        </Tabs>
-
-
-                    </Form>
-                </Modal.Body>
-
-            </Modal>
+           
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <NavLink className="navbar-brand" to="/">ACB Company</NavLink>
                 <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
@@ -104,14 +35,61 @@ const Header = () => {
                         </li>
 
                     </ul>
-                    <form className="d-flex my-2 my-lg-0 px-3">
-
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                            <NavLink to="" onClick={handleShow} style={{ textDecoration: "none", color: "white" }}>Login</NavLink>
 
 
+                    <div>
+                        <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Login
                         </button>
-                    </form>
+                        {/* The Modal */}
+                        <div className="modal" id="myModal">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    {/* Modal Header */}
+                                    <div className="modal-header">
+                                        <h4 className="modal-title">Sign in</h4>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" />
+                                    </div>
+                                    {/* Modal body */}
+                                    <div className="modal-body">
+                                        <p className='text-mute-dark'>Link your account to continue using ACB's services</p>
+
+                                        <form action="">
+                                            <nav>
+                                                <div>
+                                                    <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                                        <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Applicants</button>
+                                                        <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Employee</button>
+
+                                                    </div>
+                                                    <div className="tab-content" id="nav-tabContent">
+                                                        <div className="tab-pane fade show active text-center mt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                            <button className='btn btn-outline-secondary '><i className="fa-brands fa-google" style={{ color: "white" }}></i> Continute with Google Account</button>
+                                                        </div>
+                                                        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                                                            <label className="blogid">Employee Number</label>
+                                                            <input type="text" className='form-control' id="Employee" name='Employee' placeholder='Employee Number' required />
+                                                            <label className="title">PassWord</label>
+                                                            <input type="PassWord" className='form-control' id="PassWord" name='PassWord' placeholder='PassWord' required />
+                                                            <div className='text-end mt-4'>
+                                                                <button type="button" className="btn btn-danger mx-2" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" className="btn btn-danger " data-bs-dismiss="modal">Submit</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </nav>
+                                        </form>
+                                    </div>
+                                    {/* Modal footer */}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </nav>
 
