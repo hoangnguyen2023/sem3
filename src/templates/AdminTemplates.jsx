@@ -9,9 +9,10 @@ const AdminTemplates = () => {
                     className="w-25 bg-dark text-white"
                     style={{ minHeight: "100vh" }}
                 >
-                    <h4 className='text-warning p-5'>Dash Board</h4>
+                
+                    <h4 className='text-warning p-5'><i className="fa-solid fa-house"></i> Dash Board</h4>
                     <ul className="mt-2">
-                    <li>
+                        <li>
                             <NavLink className={"nav-link"} to="/admintemplates/Employee">
                                 Employee
                             </NavLink>
@@ -26,18 +27,22 @@ const AdminTemplates = () => {
                                 Vacacies
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink className={"nav-link"} to="/admintemplates/department">
+                                Department
+                            </NavLink>
+                        </li>
+
+
+
                     </ul>
+
 
                 </div>
                 <div className="w-75">
                     <div className="bg-dark text-white w-100 p-3 text-end">
-                        <NavLink to="" className="nav-link d-inline-block text-center ">
-                            <span className="rounded-circle">
-                                <i className="fa fa-user"></i>
-                            </span>
-                            <br />
-                            hello abc
-                        </NavLink>
+                        <i className="fa fa-user"></i>                       
+                        <NavLink className="nav-link" to="#">Sign out</NavLink>
                     </div>
                     <div>
                         <Outlet />
@@ -45,7 +50,7 @@ const AdminTemplates = () => {
                 </div>
 
             </div>
-       
+
 
         </>
     )

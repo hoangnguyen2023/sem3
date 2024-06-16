@@ -21,6 +21,7 @@ import AdminEmployee from './pages/AdminEmployee';
 import JobOverview from './pages/JobOverview';
 import PopularCompany from './pages/PopularCompany';
 import Discovery from './pages/Discovery';
+import Department from './dashboardadmin/Department';
 
 
 
@@ -61,6 +62,7 @@ root.render(
         <Route path='vacacies' element={<Vacancies />}></Route>
         <Route path='adminblog' element={<AdminBlog />}></Route>
         <Route path='Employee' element={<AdminEmployee />}></Route>
+        <Route path='department' element={<Department />}></Route>
 
       </Route>
 

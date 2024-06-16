@@ -6,22 +6,36 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 const BlogAsp = () => {
-    console.log("hhhhhhhhhhhhhhhhhhhhh")
-    const [data , setdata] = React.useState(null);
-    React.useEffect (()=>{
-        const fetchData = async () => {
-            try{
-                const response = await axios.get("https://localhost:7144/api/Blog")
-                console.log(response)
-                setdata(response.data)
-            }
-            catch (error){
-                console.error("Error fectching data : " ,error)
-            }
-        }
-    },[])
+   
+    // const [data , setdata] = React.useState(null);
+    // React.useEffect (()=>{
+    //     const fetchData = async () => {
+    //         try{
+    //             const response = await axios.get("https://localhost:7144/api/Blog")
+    //             console.log(response)
+    //             setdata(response.data)
+    //         }
+    //         catch (error){
+    //             console.error("Error fectching data : " ,error)
+    //         }
+    //     }
+    //     fetchData();
+    // },[])
     return (
         <div>
+            <button className='btn btn-danger' onClick={()=>{
+                //call api
+                let promise=axios({
+                    url:"https://localhost:7144/api/Blog",
+                    method:"GET"
+
+                });
+                //thanh cong
+                promise.then(res=>{
+                    const data=res.data;
+                    //dem data dua vao state
+                })
+            }}>Get api</button>
             <div className="card-group mt-5">
                 <div className="card ">
                     <img src={asp} className="card-img-top " data-bs-toggle="tooltip" data-bs-placement="right" title="Asp too easy now" alt="..." />
