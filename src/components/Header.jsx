@@ -1,13 +1,47 @@
 
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-
-
-
-
+import { jwtDecode } from 'jwt-decode';
+import { useState } from 'react'
+import { NavLink, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Header = () => {
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const [employeeNumber,setEmployeeNumber]=useState('');
+    const [hashPassword,setHashpassword]=useState('');
+    const navigate=useNavigate();
+    const Login= async (e)=> {
+        e.preventDefault();
+        const requestOptions = {
+            method:"POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              employeeNumber:employeeNumber,
+              hashPassword:hashPassword
+            }),
+          };
+        try{
+            const response=await fetch('https://localhost:7144/api/Auth/Login',requestOptions);
+            const data=await response.json();
+            const token=data.token;
+            localStorage.setItem('token',token);
+            const decodeToken=localStorage.getItem('token',token);
+            const jwtdecode=jwtDecode(decodeToken);
+            const decode=jwtdecode.Role;
+            if(decode==='admin'||decode ==='manager'||decode==='Employee'){
+                return navigate('/admintemplates');
+            }
+                
+        }catch(error){
+            console.error('');
+        }
+          
+      };
+
   
 
     return (
@@ -30,9 +64,7 @@ const Header = () => {
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="blog">Blog</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="admin">Admin</NavLink>
-                        </li>
+                    
 
                     </ul>
 
@@ -54,7 +86,7 @@ const Header = () => {
                                     <div className="modal-body">
                                         <p className='text-mute-dark'>Link your account to continue using ACB's services</p>
 
-                                        <form action="">
+                                        <form onSubmit={Login}>
                                             <nav>
                                                 <div>
                                                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -69,9 +101,9 @@ const Header = () => {
                                                         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                                                             <label className="blogid">Employee Number</label>
-                                                            <input type="text" className='form-control' id="Employee" name='Employee' placeholder='Employee Number' required />
+                                                            <input type="text" className='form-control'  value={employeeNumber} onChange={(e)=>setEmployeeNumber(e.target.value)} id="Employee" name='employeeNumber' placeholder='Employee Number' required />
                                                             <label className="title">PassWord</label>
-                                                            <input type="PassWord" className='form-control' id="PassWord" name='PassWord' placeholder='PassWord' required />
+                                                            <input type="passWord" className='form-control' value={hashPassword} onChange={(e)=>setHashpassword(e.target.value)} id="PassWord" name='hashPassword' placeholder='PassWord' required />
                                                             <div className='text-end mt-4'>
                                                                 <button type="button" className="btn btn-danger mx-2" data-bs-dismiss="modal">Close</button>
                                                                 <button type="submit" className="btn btn-danger " data-bs-dismiss="modal">Submit</button>

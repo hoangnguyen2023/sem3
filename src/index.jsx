@@ -12,7 +12,6 @@ import AdminTemplates from './templates/AdminTemplates';
 import About from './pages/About';
 import Career from './pages/Career';
 import Blog from './pages/Blog';
-// import BlogDetails from './components/BlogDetails';
 import BlogDetail from './pages/BlogDetail';
 import FormCV from './pages/FormCV';
 import Vacancies from './pages/Vacancies';
@@ -22,6 +21,9 @@ import JobOverview from './pages/JobOverview';
 import PopularCompany from './pages/PopularCompany';
 import Discovery from './pages/Discovery';
 import Department from './dashboardadmin/Department';
+import EmployeeInterview from './dashboardadmin/EmployeeInterview';
+import InterView from './dashboardadmin/InterView';
+import ScheduleInterview from './dashboardadmin/ScheduleInterview';
 
 
 
@@ -36,7 +38,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <BrowserRouter>
-
     <Routes>
       <Route path='' element={<HomeTemplates />}>
         <Route index element={<Home />}></Route>
@@ -50,19 +51,20 @@ root.render(
         <Route path='about' element={<About />}></Route>
         <Route path='career' element={<Career />}></Route>
         <Route path='blog' element={<Blog />}></Route>
-        <Route path='BlogDetail' element={<BlogDetail />}></Route>
-        <Route path='formcv' element={<FormCV />}></Route>
-        <Route path='admin' element={<AdminTemplates />}></Route>
+        <Route path='BlogDetail' element={<BlogDetail />}></Route>    
         <Route path='jobview' element={<JobOverview />}></Route>
         <Route path='popularCompany' element={<PopularCompany />}></Route>
-        <Route path='discover' element={<Discovery />}></Route>
-
+        <Route path='discover' element={<Discovery />}></Route>    
       </Route>
       <Route path='admintemplates' element={<AdminTemplates />}>
         <Route path='vacacies' element={<Vacancies />}></Route>
         <Route path='adminblog' element={<AdminBlog />}></Route>
         <Route path='Employee' element={<AdminEmployee />}></Route>
         <Route path='department' element={<Department />}></Route>
+        <Route path='employeeinterview' element={<EmployeeInterview />}></Route>
+        <Route path='interview'element={<InterView/>}></Route>
+        <Route path='scheduleinterview'element={<ScheduleInterview />}></Route>
+        <Route path='formcv' element={<FormCV />}></Route>   
 
       </Route>
 
