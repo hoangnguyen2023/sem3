@@ -9,6 +9,8 @@ const AdminTemplates = () => {
     const redirect=useNavigate();
     const navigate = useNavigate();
     const [employee, setemployee] = useState('');
+    const [role,setRole]=useState('');
+    const gettoken=localStorage.getItem('token');
     useEffect(() => {
         const gettoken = localStorage.getItem('token');
         if (gettoken) {
@@ -16,6 +18,7 @@ const AdminTemplates = () => {
                 const decode = jwtDecode(gettoken);
                 const Fullname = decode.Fullname;
                 setemployee(Fullname);
+                setRole(role);
             } catch (error) {
                 console.error('invalid token', error);
             }
@@ -38,27 +41,18 @@ const AdminTemplates = () => {
 
                     <h4 className='text-warning p-5'><i className="fa-solid fa-house"></i> Dash Board</h4>
                     <ul className="mt-2  ">
-                        <li className='nav-item' style={{ listStyle: "none" }}>
-                            <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="/admintemplates/Employee">
-                                Employee
-                            </NavLink>
-                        </li>
+                        {(role=='Admin'|| role=='Manager')&&(
+                             <li className='nav-item' style={{ listStyle: "none" }}>
+                             <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="/admintemplates/Employee">
+                                 Employee
+                             </NavLink>
+                         </li>
+                         
 
-                        <li className='nav-item' style={{ listStyle: "none" }}>
-                            <NavLink className={"nav-link"} to="/admintemplates/vacacies">
-                                Vacacies
-                            </NavLink>
-                        </li>
-                        <li className='nav-item' style={{ listStyle: "none" }}>
-                            <NavLink className={"nav-link"} to="/admintemplates/department">
-                                Department
-                            </NavLink>
-                        </li>
-                        <li className='nav-item' style={{ listStyle: "none" }}>
-                            <NavLink className={"nav-link"} to="/admintemplates/employeeinterview">
-                                Employee Interview
-                            </NavLink>
-                        </li>
+                        )}
+                       
+
+                      
 
                     </ul>
 
@@ -92,9 +86,6 @@ const AdminTemplates = () => {
                         </li>
 
                     </ul>
-
-
-
                 </div>
                 <div className="w-75">
                     <div className=" bg-dark text-white w-100 p-3 text-end me-2">
@@ -104,7 +95,7 @@ const AdminTemplates = () => {
                             {employee}
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><button className="dropdown-item" type="button"><NavLink  to="/admintemplates/formcv" style={{textDecoration:"none",color:"black"}}>Proflile</NavLink></button></li>
+                                <li><button className="dropdown-item" type="button"><NavLink  to="/admintemplates/Information" style={{textDecoration:"none",color:"black"}}>Informations</NavLink></button></li>
                                 <li><button className="dropdown-item" type="button" onClick={handlelogout}>Logout</button></li>
                                 
                             </ul>
