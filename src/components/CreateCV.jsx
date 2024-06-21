@@ -19,7 +19,7 @@ const CreateCV = () => {
                             <h5 className="card-title">Create CV</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
-                            <button className='btn btn-outline-success'><NavLink to="/formcv" style={{ textDecoration: 'none', color: 'black' }}> Create Now</NavLink></button>
+                            <button className='btn btn-outline-success'><NavLink to="/home/cv" style={{ textDecoration: 'none', color: 'black' }}> Create Now</NavLink></button>
                         </div>
                     </div>
                     <div className="card col-lg-2 col-md-3 col-sm-4" >

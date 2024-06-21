@@ -5,7 +5,7 @@ import nama from '../images/NamA.jpg'
 const TopCompany = () => {
     return (
         <div className='container-fluid m-5'>
-            <h4 className='text-center m-5'>Popular Company</h4>
+            <h4 className='text-center m-5'>Blog Career</h4>
             <div className='row gap-2 justify-content-center'>
                 <div className="card col-lg-3 col-md-3 col-sm-4 " >
                     <img src={acb} className="card-img-top" alt="..." />

@@ -1,9 +1,10 @@
 import React from 'react'
+import InterViewEmp from '../components/InterViewEmp'
 
 const InterView = () => {
   return (
     <div>
-      Inter view
+      <InterViewEmp/>
     </div>
   )
 }

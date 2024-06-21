@@ -56,7 +56,7 @@ const JobFullStack = () => {
                                     </ul>
 
                                 </p>
-                               <button className='btn btn-outline-primary'>Apply For This Position</button>
+                               <button className='btn btn-outline-primary'><NavLink style={{textDecoration:"none",color:"black"}} to="/jobview/applyjob" >Apply For This Position</NavLink> </button>
                             </div>
                         </div>
                     </div>

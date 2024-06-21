@@ -11,52 +11,52 @@ const Header = () => {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
-    const [employeeNumber,setEmployeeNumber]=useState('');
-    const [hashPassword,setHashpassword]=useState('');
-    const navigate=useNavigate();
-    const Login= async (e)=> {
+    const [employeeNumber, setEmployeeNumber] = useState('');
+    const [hashPassword, setHashpassword] = useState('');
+    const navigate = useNavigate();
+    const Login = async (e) => {
         e.preventDefault();
         const requestOptions = {
-            method:"POST",
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              employeeNumber:employeeNumber,
-              hashPassword:hashPassword
+                employeeNumber: employeeNumber,
+                hashPassword: hashPassword
             }),
-          };
-        try{
-            const response=await fetch('https://localhost:7144/api/Auth/Login',requestOptions);
-            const data=await response.json();
-            const token=data.token;
-            localStorage.setItem('token',token);
-            const decodeToken=localStorage.getItem('token',token);
-            const jwtdecode=jwtDecode(decodeToken);
-            const decode=jwtdecode.Role;
-            if(decode==='admin'||decode ==='manager'||decode==='Employee'){
+        };
+        try {
+            const response = await fetch('https://localhost:7144/api/Auth/Login', requestOptions);
+            const data = await response.json();
+            const token = data.token;
+            localStorage.setItem('token', token);
+            const decodeToken = localStorage.getItem('token', token);
+            const jwtdecode = jwtDecode(decodeToken);
+            const decode = jwtdecode.Role;
+            if (decode === 'Admin' || decode === 'HR' || decode === 'Employee') {
                 return navigate('/admintemplates');
             }
-                
-        }catch(error){
+
+        } catch (error) {
             console.error('');
         }
-          
-      };
 
-  
+    };
+
+
 
     return (
         <div>
 
-           
+
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <NavLink className="navbar-brand" to="/">ACB Company</NavLink>
                 <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
                 <div className="collapse navbar-collapse " id="collapsibleNavId">
                     <ul className="navbar-nav me-auto  mt-lg-0  ml-auto">
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="career">Career</NavLink>
-                        </li>
+                        </li> */}
 
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="About">About Us</NavLink>
@@ -64,7 +64,22 @@ const Header = () => {
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} to="blog">Blog</NavLink>
                         </li>
-                    
+
+                        <li className="nav-item dropdown">
+                            <NavLink className="nav-link"  data-bs-toggle="dropdown" aria-expanded="false">
+                                Career
+                            </NavLink>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><NavLink className="dropdown-item nav-link bg-light text-dark" to="/career">Engineering</NavLink></li>
+                                <li><NavLink className="dropdown-item nav-link bg-light text-dark" to="#">FullStack</NavLink></li>
+                                <li><NavLink className="dropdown-item nav-link bg-light text-dark" to="#">BackEnd</NavLink></li>
+                                <li><NavLink className="dropdown-item nav-link bg-light text-dark" to="#">FondEnd</NavLink></li>
+                              
+                            </ul>
+                        </li>
+
+
+
 
                     </ul>
 
@@ -101,9 +116,9 @@ const Header = () => {
                                                         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                                                             <label className="blogid">Employee Number</label>
-                                                            <input type="text" className='form-control'  value={employeeNumber} onChange={(e)=>setEmployeeNumber(e.target.value)} id="Employee" name='employeeNumber' placeholder='Employee Number' required />
+                                                            <input type="text" className='form-control' value={employeeNumber} onChange={(e) => setEmployeeNumber(e.target.value)} id="Employee" name='employeeNumber' placeholder='Employee Number' required />
                                                             <label className="title">PassWord</label>
-                                                            <input type="passWord" className='form-control' value={hashPassword} onChange={(e)=>setHashpassword(e.target.value)} id="PassWord" name='hashPassword' placeholder='PassWord' required />
+                                                            <input type="passWord" className='form-control' value={hashPassword} onChange={(e) => setHashpassword(e.target.value)} id="PassWord" name='hashPassword' placeholder='PassWord' required />
                                                             <div className='text-end mt-4'>
                                                                 <button type="button" className="btn btn-danger mx-2" data-bs-dismiss="modal">Close</button>
                                                                 <button type="submit" className="btn btn-danger " data-bs-dismiss="modal">Submit</button>
@@ -116,7 +131,7 @@ const Header = () => {
                                         </form>
                                     </div>
                                     {/* Modal footer */}
-                                    
+
                                 </div>
                             </div>
                         </div>

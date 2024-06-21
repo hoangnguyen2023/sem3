@@ -24,6 +24,9 @@ import EmployeeInterview from './dashboardadmin/EmployeeInterview';
 import InterView from './dashboardadmin/InterView';
 import ScheduleInterview from './dashboardadmin/ScheduleInterview';
 import Information from './pages/Information';
+import CV from './pages/CV';
+import Applicant from './dashboardadmin/Applicant';
+import ApplyJob from './pages/ApplyJob';
 
 
 
@@ -55,6 +58,8 @@ root.render(
         <Route path='jobview' element={<JobOverview />}></Route>
         <Route path='popularCompany' element={<PopularCompany />}></Route>
         <Route path='discover' element={<Discovery />}></Route>
+        <Route path='/home/cv' element={<CV/>}></Route>
+        <Route path='/jobview/applyjob' element={<ApplyJob />}></Route>
       </Route>
       <Route path='admintemplates' element={<AdminTemplates />}>
         <Route index element={< Information />}></Route>
@@ -66,6 +71,8 @@ root.render(
         <Route path='interview' element={<InterView />}></Route>
         <Route path='scheduleinterview' element={<ScheduleInterview />}></Route>
         <Route path='information'element={<Information />}></Route>
+        <Route path='applicant' element={<Applicant />}></Route>
+        <Route path='intervew'element={<InterView/>}></Route>
        
 
       </Route>
