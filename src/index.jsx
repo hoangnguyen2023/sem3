@@ -54,7 +54,7 @@ root.render(
         <Route path='about' element={<About />}></Route>
         <Route path='career' element={<Career />}></Route>
         <Route path='blog' element={<Blog />}></Route>
-        <Route path='BlogDetail' element={<BlogDetail />}></Route>
+        <Route path='/BlogDetail/:id' element={<BlogDetail />}></Route>
         <Route path='jobview' element={<JobOverview />}></Route>
         <Route path='popularCompany' element={<PopularCompany />}></Route>
         <Route path='discover' element={<Discovery />}></Route>

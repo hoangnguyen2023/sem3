@@ -1,164 +1,107 @@
 import React from 'react'
 import acb from '../images/Acb.jpg'
 import nama from '../images/NamA.jpg'
+import '../scss/blog.css'
 
 const TopCompany = () => {
     return (
-        <div className='container-fluid m-5'>
-            <h4 className='text-center m-5'>Blog Career</h4>
-            <div className='row gap-2 justify-content-center'>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
-                    <img src={acb} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
-                    </div>
-                </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
+        <div>
+            <h3 className='title'>Blog Developer </h3>
+            <div className="container row row-cols-1 row-cols-lg-5 g-lg-3 m-auto gap-5">
+                <div className="card">
                     <img src={nama} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
-                    <img src={acb} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
-                    </div>
-                </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
+                <div className="card">
                     <img src={nama} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                        <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
-                    <img src={acb} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
-                    </div>
-                </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
+                <div className="card">
                     <img src={nama} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
-                    <img src={acb} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
-                    </div>
-                </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
+                <div className="card">
                     <img src={nama} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
-                <div className="card col-lg-3 col-md-3 col-sm-4 " >
+                <div className="card">
                     <img src={nama} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">An item</li>
-                        <li className="list-group-item">A second item</li>
-                        <li className="list-group-item">A third item</li>
-                    </ul>
-                    <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
-
-
+                <div className="card">
+                    <img src={nama} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>  <div className="card">
+                    <img src={nama} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div className="card">
+                    <img src={nama} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div className="card">
+                    <img src={nama} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div className="card">
+                    <img src={nama} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div className="card">
+                    <img src={nama} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
 
             </div>
 
 
-
         </div>
+
+
     )
 }
 

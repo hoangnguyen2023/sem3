@@ -1,6 +1,6 @@
 import React from 'react'
-import banner from '../images/Acb.jpg'
-import banner2 from '../images/NamA.jpg'
+import banner from '../images/groupteam2.jpg'
+import banner2 from '../images/personal.jpg'
 
 const Banner = () => {
     return (

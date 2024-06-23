@@ -4,7 +4,7 @@ const FormApplyJob = () => {
     return (
         <div className='d-flex justify-content-center' >
 
-            <div className="card  col-lg-8 mx-2 my-5">
+            <div className="card  col-lg-8 mx-2 my-5" style={{border:"none"}}>
                 <h2 className='text-center my-5'>(Senior) AI Engineer, KiLM</h2>
 
                 <div className="card-header text-center">

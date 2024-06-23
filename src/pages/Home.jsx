@@ -1,6 +1,6 @@
 import React from 'react'
 import Find from '../components/Find'
-// import CreateCV from '../components/CreateCV'
+import CreateCV from '../components/CreateCV'
 import Customer from '../components/Customer'
 // import Jobnew from './Jobnew'
 import Banner from '../components/Banner'
@@ -13,7 +13,7 @@ const Home = () => {
       <Banner />
       <Find />
       <Job />
-      {/* <CreateCV /> */}
+      <CreateCV />
       <Customer />
       <TopCompany />
       {/* <Jobnew /> */}

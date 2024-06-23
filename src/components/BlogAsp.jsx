@@ -32,7 +32,7 @@ const BlogAsp = () => {
                             <h5 className="card-title">{item.title}</h5>
                             <p className="card-text">{item.description}</p>
                             <button className='btn btn-success'>
-                                <NavLink className={"nav-link"} to="/BlogDetail">Details</NavLink>
+                                <NavLink className={"nav-link"} to={`/BlogDetail/${item.blogID}`}>Details</NavLink>
                             </button>
                         </div>
                         <div className="card-footer">
