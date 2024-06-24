@@ -55,11 +55,11 @@ root.render(
         <Route path='career' element={<Career />}></Route>
         <Route path='blog' element={<Blog />}></Route>
         <Route path='/BlogDetail/:id' element={<BlogDetail />}></Route>
-        <Route path='jobview' element={<JobOverview />}></Route>
+        <Route path='/jobview/:id' element={<JobOverview />}></Route>
         <Route path='popularCompany' element={<PopularCompany />}></Route>
         <Route path='discover' element={<Discovery />}></Route>
         <Route path='/home/cv' element={<CV/>}></Route>
-        <Route path='/jobview/applyjob' element={<ApplyJob />}></Route>
+        <Route path='/applyjob/:id' element={<ApplyJob />}></Route>
       </Route>
       <Route path='admintemplates' element={<AdminTemplates />}>
         <Route index element={< Information />}></Route>

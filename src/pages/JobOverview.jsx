@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import JobFullStack from '../components/JobFullStack'
+import { useParams } from 'react-router-dom'
 
 
 const JobOverview = () => {
+    const {id} = useParams()
+    console.log(id)
     return (
         <div>
-            <JobFullStack/>
+            
+            <JobFullStack id={id}/>
 
         </div>
         
