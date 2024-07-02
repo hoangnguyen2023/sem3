@@ -1,11 +1,11 @@
 import React from 'react'
 
 const InterViewEmp = () => {
-  return (
-    <div>
+    return (
         <div>
+            <div>
                 <button type="button" className="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#myModal">
-                    Create InterView
+                    Create Employee Interview
                 </button>
                 {/* The Modal */}
                 <div className="modal" id="myModal">
@@ -21,13 +21,22 @@ const InterViewEmp = () => {
                                 <form action="">
                                     <label className="blogid">InterviewId</label>
                                     <input type="text" className='form-control' id="InterviewId" name='InterviewId' />
-                                    <label className="ScheduledDate">ScheduledDate</label>
+                                    <label className="ScheduledDate">InterviewNumber</label>
                                     <input type="text" className='form-control' id="ScheduledDate" name='ScheduledDate' />
-                                    <label className="StartTime">StartTime</label>
-                                    <input type="datetime" className='form-control' id="StartTime" name='StartTime' />
-                                    <label className="EndTime">EndTime</label>
-                                    <input type="datetime" className='form-control' id="EndTime" name='EndTime' />
-                                   
+                                    <label className="StartTime">InterviewID </label>
+                                    <input type="text" className='form-control' id="StartTime" name='StartTime' />
+                                    <label className="EndTime">EmployeeID </label>
+                                    <input type="text" className='form-control' id="EndTime" name='EndTime' />
+                                    <label className="EndTime">Status  </label>
+                                    <select className="form-select form-select-md mb-3 mt-2" aria-label=".form-select-sm example">
+                                        <option selected>this select menu</option>
+                                        <option value={1}>Accpet</option>
+                                        <option value={2}>Reject</option>
+                                        <option value={3}>Not Response</option>
+
+                                    </select>
+
+
                                 </form>
                             </div>
                             {/* Modal footer */}
@@ -42,10 +51,12 @@ const InterViewEmp = () => {
                 <thead>
                     <tr>
                         <th scope="col">InterviewId</th>
-                        <th scope="col">ScheduledDate</th>
-                        <th scope="col">StartTime</th>
-                        <th scope="col">EndTime</th>             
+                        <th scope="col">InterviewNumber</th>
+                        <th scope="col">InterviewID</th>
+                        <th scope="col">EmployeeID</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
+
 
                     </tr>
                 </thead>
@@ -53,8 +64,10 @@ const InterViewEmp = () => {
                     <tr>
                         <th scope="row">1</th>
                         <td>Mark</td>
-                        <td>Otto</td>           
+                        <td>Otto</td>
                         <td>Mark</td>
+                        <td>Otto</td>
+
                         <td>
                             <button className='btn btn-success '>Delete</button>
                             <button className='btn btn-danger'>Edit</button>
@@ -64,9 +77,9 @@ const InterViewEmp = () => {
 
                 </tbody>
             </table>
-      
-    </div>
-  )
+
+        </div>
+    )
 }
 
 export default InterViewEmp

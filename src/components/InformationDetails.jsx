@@ -5,7 +5,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 const InformationDetails = () => {
-    const [profile, setProfile] = useState(null);
+    const [profile, setProfile] = useState([]);
     const [load, setLoad] = useState(null);
     const fetchdata = async (empnumber) => {
         var res = await axios.get(`https://localhost:7144/api/Employee/${empnumber}`)
@@ -22,13 +22,34 @@ const InformationDetails = () => {
         //Goi Api
         fetchdata(parse.EmployeeNumber)
     }, [])
+    const [newpassword, setnewpassword] = useState({
+        newPassword: '',
+        employeeID: ''
+    });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setnewpassword({ ...newpassword, [name]: value });
+    }
+    const editpassword = async () => {
+        const { newPassword, employeeID } = newpassword;
+        const formdata = new FormData();
+        formdata.append('HashPassword', newPassword);
+        formdata.append('EmployeeID', employeeID)
+        try {
+            const res = await axios.put('https://localhost:7144/api/Employee/changePassword',formdata)
+            if(res.status===200){
+                console.log('change password success');
+            }
+        } catch (error) {
+
+        }
+    }
     if (load) return <p> Loading ....</p>
     //    if(error)return <p>{error.message}</p>
     return (
-        <>
+        <div>
             <div className='text-center'>
-                <Image src={cv} roundedCircle style={{ width:100, height: 100 }} className='mx-2 my-2 ' />
-
+                <img src={profile && profile.image && profile.image} roundedCircle style={{ width: 100, height: 100 }} className='mx-2 my-2 ' />
             </div>
 
 
@@ -47,6 +68,8 @@ const InformationDetails = () => {
                     <input type="text" className="form-control my-2" value={profile && profile.employeeNumber && profile.employeeNumber} readOnly aria-label="Username" aria-describedby="addon-wrapping" />
                     <span className="input-group-text my-2 " id="addon-wrapping">Department:</span>
                     <input type="text" className="form-control my-2" value={profile && profile.departments && profile.departments} readOnly aria-label="Username" aria-describedby="addon-wrapping" />
+                    <span className="input-group-text my-2 " id="addon-wrapping">Role:</span>
+                    <input type="text" className="form-control my-2" value={profile && profile.role && profile.role} readOnly aria-label="Username" aria-describedby="addon-wrapping" />
                     <span className="input-group-text my-2 " id="addon-wrapping">Email:</span>
                     <input type="text" className="form-control my-2" value={profile && profile.email && profile.email} readOnly aria-label="Username" aria-describedby="addon-wrapping" />
                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
@@ -77,7 +100,7 @@ const InformationDetails = () => {
                     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                 </div>
             </div>
-            <form className="row g-3 needs-validation " >
+            <form className="row g-3 needs-validation " onSubmit={editpassword} >
 
 
 
@@ -91,17 +114,18 @@ const InformationDetails = () => {
                             </div>
                             <div className="modal-body">
                                 <div className="mb-3">
-                                    <label htmlFor="exampleFormControlInput1" className="form-label">PassWord</label>
-                                    <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="PassWord" />
+                                    {/* <label htmlFor="exampleFormControlInput1" className="form-label">PassWord</label>
+                                    <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="PassWord" /> */}
                                     <div className="mb-3">
-                                        <label htmlFor="exampleFormControlInput1" className="form-label">Confirm PassWord</label>
-                                        <input type="repassword" className="form-control" id="exampleFormControlInput1" placeholder="rePassWord" />
+                                        <input type="text" name='employeeID' value={profile && profile.employeeID && profile.employeeID} onChange={handleChange}/>
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">New PassWord</label>
+                                        <input type="text" className="form-control" name='newpassword' onChange={handleChange} id="exampleFormControlInput1" placeholder="rePassWord" />
                                     </div>
                                 </div>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Save changes</button>
+                                <button type="submit" className="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -109,7 +133,7 @@ const InformationDetails = () => {
             </form>
 
 
-        </>
+        </div>
 
     )
 }

@@ -1,0 +1,42 @@
+
+/* .css_title{
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    height: 0.1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.css_decription{
+    font-size: 0.9rem;
+    line-height: 1rem;
+    height: 5rem;
+    display: -webkit-box;
+    -webkit-line-clamp:5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+} 
+    */
+.style{
+    font-size: 0.9rem;
+    line-height: 0.8rem;
+    height: 1rem;
+    overflow: hidden;  
+
+    
+
+}
+.filecv{
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 150px;
+
+}

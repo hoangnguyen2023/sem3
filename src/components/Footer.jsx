@@ -29,7 +29,7 @@ const Footer = () => {
                 {/* Copyright */}
                 <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                     © 2024 Copyright  
-                    <NavLink className="text-white" to="https://mdbootstrap.com/"> Team 2</NavLink>
+                    <NavLink className="text-white " style={{textDecoration:"none"}} to="https://mdbootstrap.com/" > Team 2  </NavLink>
                 </div>
                 {/* Copyright */}
             </footer>

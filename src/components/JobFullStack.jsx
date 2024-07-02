@@ -1,8 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate, useNavigate } from 'react-router-dom'
+import moment from 'moment';
+
 
 const JobFullStack = ({ id }) => {
+    const redirect=useNavigate();
+    const handleapply=()=>{
+        if(localStorage.getItem('token')){
+        
+           return redirect(`/applyjob/${jobview.vacancyID}`);
+           
+        }else{
+            alert("You Must Login !!")
+            return redirect('/')
+        }
+    }
+   
+
+
     const [jobview, setJobview] = useState(null);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(null)
@@ -21,8 +37,11 @@ const JobFullStack = ({ id }) => {
         };
         fetchData();
     }, [])
+
     if (load) return <div>Loading ...</div>
     if (error) return <div> Error: {error.message}</div>
+    
+
 
     return (
         <div>
@@ -37,8 +56,8 @@ const JobFullStack = ({ id }) => {
                         <div className="col-sm-6">
                             <div className="card " style={{ border: "none" }}>
                                 <div className="card-body">
-                                    <button className='btn btn-outline-primary my-2' style={{ display: "block" }}><p>Create Day: {jobview.createDate}</p></button>
-                                    <button className='btn btn-outline-primary my-2'><p>Close Day:{jobview.closeDate}</p></button>
+                                <i class="fa-solid fa-calendar-days"></i><p>Create Day:{moment(jobview.createDate).format("DD/MM/YYYY HH:mm")}</p>
+                                <i class="fa-solid fa-calendar-days"></i><p>Close Day:{moment(jobview.closeDate).format("DD/MM/YYYY  HH:mm" )}</p>
 
                                     <h5 className="card-title">What you will do</h5>
                                     <p className="card-text">
@@ -71,7 +90,9 @@ const JobFullStack = ({ id }) => {
                                         </ul>
 
                                     </p>
-                                    <button className='btn btn-outline-primary'><NavLink style={{ textDecoration: "none", color: "black" }} to={`/applyjob/${jobview.vacancyID}`} >Apply For This Position</NavLink> </button>
+
+
+                                    <button className='btn btn-outline-primary' onClick={handleapply}>Apply For This Position</button>
                                 </div>
                             </div>
                         </div>

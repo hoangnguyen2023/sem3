@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
 import Contact from './pages/Contact';
-import Profile from './pages/Profile';
+import Profile from './templates/Profile';
 import HomeTemplates from './templates/HomeTemplates';
 import AdminTemplates from './templates/AdminTemplates';
 import About from './pages/About';
@@ -27,6 +27,11 @@ import Information from './pages/Information';
 import CV from './pages/CV';
 import Applicant from './dashboardadmin/Applicant';
 import ApplyJob from './pages/ApplyJob';
+import Vacanylist from './pages/Vacanylist';
+import ApplyAction from './pages/ApplyAction';
+import InterViewEmp from './dashboardadmin/InterViewEmp';
+import ProfileApplicants from './dashboardadmin/ProfileApplicants';
+import Vancancy from './pages/Vancancy';
 
 
 
@@ -58,8 +63,10 @@ root.render(
         <Route path='/jobview/:id' element={<JobOverview />}></Route>
         <Route path='popularCompany' element={<PopularCompany />}></Route>
         <Route path='discover' element={<Discovery />}></Route>
-        <Route path='/home/cv' element={<CV/>}></Route>
+        <Route path='/home/cv' element={<CV />}></Route>
         <Route path='/applyjob/:id' element={<ApplyJob />}></Route>
+        <Route path='/VacanyList/:id' element={<Vacanylist />}></Route>
+
       </Route>
       <Route path='admintemplates' element={<AdminTemplates />}>
         <Route index element={< Information />}></Route>
@@ -70,10 +77,17 @@ root.render(
         <Route path='employeeinterview' element={<EmployeeInterview />}></Route>
         <Route path='interview' element={<InterView />}></Route>
         <Route path='scheduleinterview' element={<ScheduleInterview />}></Route>
-        <Route path='information'element={<Information />}></Route>
+        <Route path='information' element={<Information />}></Route>
         <Route path='applicant' element={<Applicant />}></Route>
-        <Route path='intervew'element={<InterView/>}></Route>
-       
+        <Route path='intervew' element={<InterView />}></Route>
+        <Route path='applyaction' element={<ApplyAction />}></Route>
+        <Route path='interviewemp' element={<InterViewEmp />}></Route>
+      </Route>
+      <Route path='profile' element={<Profile />}>
+      <Route index element={<ProfileApplicants/>}></Route>
+
+        <Route path='profileapplicant' element={<ProfileApplicants />}></Route>
+        <Route path='vacancy'element={<Vancancy/>}></Route>
 
       </Route>
 

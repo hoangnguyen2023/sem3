@@ -3,6 +3,7 @@ import { NavLink, Navigate, Outlet } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const AdminTemplates = () => {
@@ -10,13 +11,26 @@ const AdminTemplates = () => {
     const navigate = useNavigate();
     const [employee, setemployee] = useState('');
     const [role, setRole] = useState('');
+    const [profile, setProfile] = useState(null)
+    const fetchdata = async (employeeNumber) => {
+        try {
+            const res = await axios.get(`https://localhost:7144/api/Employee/${employeeNumber}`);
+            console.log(res);
+            if (res && res.data) {
+                setProfile(res.data)
+            }
+        } catch (error) {
+            console.error('Ivaliid', error);
+        }
+    }
     useEffect(() => {
         const gettoken = localStorage.getItem('token');
+        fetchdata()
         if (gettoken) {
             try {
                 const decode = jwtDecode(gettoken);
                 const Fullname = decode.Fullname;
-                const decoderole = decode.Role;
+                const decoderole = decode.Roless;
                 setemployee(Fullname);
                 setRole(decoderole);
             } catch (error) {
@@ -35,29 +49,29 @@ const AdminTemplates = () => {
         <>
             <div className="d-flex">
                 <div
-                    className="w-25 bg-dark text-white"
-                    style={{ minHeight: "100vh" }}
+                    className="bg-dark text-white"
+                    style={{ minHeight: "100vh", width: "15rem" }}
                 >
 
-                    <h4 className='text-warning p-5'><i className="fa-solid fa-house"></i> Dash Board</h4>
+                    <h5 className='text-warning py-5 ms-4'><i className="fa-solid fa-house"></i>
+                        <NavLink className={"nav-link"} to="/">
+                            Dashboard
+                        </NavLink>
+                    </h5>
                     <ul className="mt-2  ">
 
                     </ul>
 
-                    <ul className='mt-2'>
-
-                        {(role === 'Admin') && (
-                            <li className='nav-item' style={{ listStyle: "none" }}>
-                                <NavLink className={"nav-link"} to="/admintemplates/adminblog">
-                                    Blog
-                                </NavLink>
-                            </li>
-                        )}
+                    <ul className='ms-4 mt-4' >
                         {(role === 'Admin' || role === 'HR') && (
                             <li className='nav-item' style={{ listStyle: "none" }}>
                                 <NavLink className={"nav-link"} to="/admintemplates/vacacies">
                                     Vacancy
                                 </NavLink>
+                                <NavLink className={"nav-link"} to="/admintemplates/adminblog">
+                                    Blog
+                                </NavLink>
+
                             </li>
                         )}
                         <li className='nav-item' style={{ listStyle: "none" }}>
@@ -70,34 +84,46 @@ const AdminTemplates = () => {
                                 Department
                             </NavLink>
                         </li>
-                        <li className='nav-item' style={{ listStyle: "none" }}>
-                            <NavLink className={"nav-link"} to="/admintemplates/intervew">
-                                InterView
-                            </NavLink>
-                        </li>
+
                         <li className='nav-item' style={{ listStyle: "none" }}>
                             <NavLink className={"nav-link"} to="/admintemplates/Employee">
                                 Employee
                             </NavLink>
                         </li>
-                        {(role === 'HR') && (
+                        <li className='nav-item' style={{ listStyle: "none" }}>
+                            <NavLink className={"nav-link"} to="/admintemplates/ApplyAction">
+                                ApplyAction
+                            </NavLink>
+                        </li>
+                        <li className='nav-item' style={{ listStyle: "none" }}>
+                            <NavLink className={"nav-link"} to="/admintemplates/intervew">
+                                intervew
+                            </NavLink>
+                        </li>
+                        <li className='nav-item' style={{ listStyle: "none" }}>
+                            <NavLink className={"nav-link"} to="/admintemplates/interviewemp">
+                                intervew Employee
+                            </NavLink>
+                        </li>
+
+                        {(role === 'Employee') && (
                             <li className='nav-item' style={{ listStyle: "none" }}>
-                                <NavLink className={"nav-link"} to="/admintemplates/adminblog">
-                                    Blog
+                                <NavLink className={"nav-link"} to="/admintemplates/ApplyAction">
+                                    ApplyAction
                                 </NavLink>
                             </li>
 
 
                         )}
-                      
+
 
                     </ul>
                 </div>
-                <div className="w-75">
+                <div className="" style={{ width: "80rem" }} >
                     <div className=" bg-dark text-white w-100 p-3 text-end me-2">
                         <div className="dropdown">
                             <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src='' style={{ width: 30, height: 30, borderRadius: 30 }} />
+                                {/* <img src={profile && profile.image} style={{ width: 30, height: 30, borderRadius: 30 }} /> */}
                                 {employee}
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">

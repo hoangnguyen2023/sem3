@@ -31,7 +31,7 @@ export const Slide = React.memo(function (StackedCarouselSlideProps) {
       <div className="detail fill">
         <div className="discription">
         <img
-            style={{ width: 100 }}
+            style={{ width: 90 }}
             alt="Acb"
             className="cover-image"
             src={coverImage}
@@ -42,7 +42,7 @@ export const Slide = React.memo(function (StackedCarouselSlideProps) {
 
           
           </div>
-         <NavLink to="/Profile" className="text-center"><button className='btn btn-outline-success'> {navlin}</button></NavLink>
+         <NavLink to="" className="text-center"><button className='btn btn-outline-success'> {navlin}</button></NavLink>
 
           {/* <p>{text}</p> */}
         </div>

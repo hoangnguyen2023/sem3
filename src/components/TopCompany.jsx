@@ -1,100 +1,46 @@
-import React from 'react'
-import acb from '../images/Acb.jpg'
-import nama from '../images/NamA.jpg'
+import React, { useEffect, useState } from 'react'
 import '../scss/blog.css'
+import axios from 'axios'
+import { NavLink } from 'react-router-dom'
+import { colors } from '@mui/material'
 
 const TopCompany = () => {
+    const [blog,setBlog]=useState(null)
+    const[error,setError]=useState(null)
+    const[load,setLoad]=useState(null)
+    useEffect(()=>{
+        const fetchData=async()=>{
+            try {
+                const res=await axios.get(`https://localhost:7144/api/Blog/GetAllBlog`)
+                console.log(res);
+                setBlog(res&&res.data)
+            }catch(error){
+                setError(error)
+            }finally{
+                setLoad(false)
+            }
+        };
+        fetchData();
+    },[])
     return (
-        <div>
-            <h3 className='title'>Blog Developer </h3>
+        <div className='my-5'>
+            <h3 className='title'>Blog Developer IT </h3>
             <div className="container row row-cols-1 row-cols-lg-5 g-lg-3 m-auto gap-5">
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
+               {blog && blog.map((item)=>(
+                    <div className="card">
+                    <img src={item.image} className="card-img-top" alt="..." style={{maxHeight:150}}/>
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                        <h5 className="card-title css_title">{item.title}</h5>
+                        <p className="card-text css_decription">{item.description}</p>
+                        <p className="card-text"><small className="text-muted">{item.createdAt}</small></p>
+                    </div>
+                    <div className='card-footer text-center' style={{background:"white" ,border:"none"}}  >
+                        <NavLink className="btn btn-outline-primary" style={{textDecoration:"none"}} to={`/BlogDetail/${item.blogID}`}>Read More </NavLink>
                     </div>
                 </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>  <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img src={nama} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
+               ))}
+                
+                
 
             </div>
 

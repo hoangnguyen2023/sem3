@@ -1,12 +1,18 @@
 import React from 'react'
 import BlogAsp from '../components/BlogAsp'
+import Banner from '../components/Banner'
 
 const Blog = () => {
     return (
-        <div>
-           <BlogAsp />
-           
-        </div>
+        <>
+        <Banner/>
+        
+            <div className='container-fluid'>
+                <BlogAsp />
+
+            </div>
+
+        </>
 
     )
 }

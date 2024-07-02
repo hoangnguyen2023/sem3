@@ -1,4 +1,4 @@
-card .card-button {
+.card-button {
     position: absolute;
     top: 50%;
     box-shadow: none;
@@ -11,7 +11,7 @@ card .card-button {
     right: 0%;
   }
   .react-stacked-center-carousel {
-    padding: 20px 0;
+    padding: 0;
   }
   
   .card-card {

@@ -1,9 +1,7 @@
 import React from 'react'
 import { StackedCarousel, ResponsiveContainer } from 'react-stacked-center-carousel'
-// import Fab from "@material-ui/core/Fab";
-// import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
-// import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { Slide } from '../components/Slide';
+
 
 
 
@@ -12,54 +10,55 @@ import { Slide } from '../components/Slide';
 
 const data = [
     {
-        image:"",
+        image: "https://localhost:7144/Blog/laravel_638551688228170870.jpg",
         title: "ACB Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
-       
-        navlin:"Click here"
+
+        navlin: "Click here"
 
     },
     {
-        image:"",
+        image: "https://localhost:7144/Blog/python_638551689057366661.jpg",
         title: "TP Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
-       
-        navlin:"Click here"
+
+        navlin: "Click here"
     },
     {
-        image:"",
+        image: "https://localhost:7144/Blog/C++_638551751092945080.jpg",
         title: "AnBinh Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
-       
-        navlin:"Click here"
+
+        navlin: "Click here"
     },
     {
-        image:"",
+        image: "https://localhost:7144/Blog/AI_638551754613333169.jpg",
         title: "NamA Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
-       
-        navlin:"Click here"
+
+        navlin: "Click here"
     },
     {
-        image:"",
+        image: "https://localhost:7144/Blog/Asp_638551752858439191.jpg",
         title: "SacomBank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
-       
-        navlin:"Click here"
+
+        navlin: "Click here"
     }
 ];
 
 const Customer = () => {
+
     const ref = React.useRef(StackedCarousel);
     return (
         <div className='container-fluid my-5'>
             <h4 className='text-center my-5'> Top Company</h4>
-            <div className="card">
+            <div className="card ">
                 <div style={{ width: "100%", position: "relative" }}>
                     <ResponsiveContainer
                         carouselRef={ref}
@@ -79,20 +78,6 @@ const Customer = () => {
                             );
                         }}
                     />
-                    {/* <Fab
-                        className="card-button left"
-                        size="small"
-                        onClick={() => ref.current?.goBack()}
-                    >
-                        <KeyboardArrowLeftIcon style={{ fontSize: 30 }} />
-                    </Fab>
-                    <Fab
-                        className="card-button right"
-                        size="small"
-                        onClick={() => ref.current?.goNext()}
-                    >
-                        <KeyboardArrowRightIcon style={{ fontSize: 30 }} />
-                    </Fab> */}
                 </div>
             </div>
 
