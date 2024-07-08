@@ -1,0 +1,95 @@
+.stylejob {
+    margin-left: 100px !important;
+}
+
+.stylecount {
+
+    background-color: rgb(243, 244, 245);
+    border-radius: 15px;
+}
+
+.style_card {
+    background-color: rgb(243, 244, 245);
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 5px 5px 5px rgb(233, 235, 238);
+}
+
+.content_item {
+    position: relative;
+    padding: 0;
+}
+
+.over_lay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(236, 126, 146, 0.6);
+    opacity: 0;
+    transition: all 0.5s;
+    border-radius: 15px;
+}
+
+.content_item:hover .over_lay {
+    opacity: 1;
+    transition: 0.8s;
+    cursor: pointer;
+
+
+}
+
+.text_overlay {
+    position: absolute;
+    top: 35px;
+    right: 250px;
+    opacity: 1;
+    transition: all 0.5s;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+}
+
+.content_item_career {
+    position: relative;
+
+}
+
+.text_overlay_career {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 119, 119);
+    border-radius: 15px;
+    opacity: 0;
+    transition: all 0.5s;
+
+}
+
+.apply_overlay {
+    position: absolute;
+    top: 18px;
+    right: 200px;
+    color: rgb(242, 242, 244);
+}
+
+.content_item_career:hover .text_overlay_career {
+    opacity: 1;
+    transition: 0.8s;
+    cursor: pointer;
+
+
+}
+
+.title__career {
+    width: 250px;
+   
+}
+.text_header{
+    border-radius: 15px;
+    box-shadow: 2px 5px 10px 5px  rgb(201, 211, 220);
+}

@@ -30,3 +30,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.title_blog{
+    width: 250px; 
+}
+.text_header{
+    border-radius: 15px;
+    box-shadow: 2px 5px 10px 5px  rgb(201, 211, 220);
+}

@@ -13,7 +13,7 @@ const TopCompany = () => {
             try {
                 const res=await axios.get(`https://localhost:7144/api/Blog/GetAllBlog`)
                 console.log(res);
-                setBlog(res&&res.data)
+                setBlog(res&&res.data.data)
             }catch(error){
                 setError(error)
             }finally{
@@ -22,6 +22,7 @@ const TopCompany = () => {
         };
         fetchData();
     },[])
+    
     return (
         <div className='my-5'>
             <h3 className='title'>Blog Developer IT </h3>
@@ -32,10 +33,10 @@ const TopCompany = () => {
                     <div className="card-body">
                         <h5 className="card-title css_title">{item.title}</h5>
                         <p className="card-text css_decription">{item.description}</p>
-                        <p className="card-text"><small className="text-muted">{item.createdAt}</small></p>
+                        {/* <p className="card-text"><small className="text-muted">{item.createdAt}</small></p> */}
                     </div>
                     <div className='card-footer text-center' style={{background:"white" ,border:"none"}}  >
-                        <NavLink className="btn btn-outline-primary" style={{textDecoration:"none"}} to={`/BlogDetail/${item.blogID}`}>Read More </NavLink>
+                        <NavLink className="btn btn-outline-primary" style={{textDecoration:"none"}} to={`/BlogDetail?id=${item.blogNumber}`}>Read More </NavLink>
                     </div>
                 </div>
                ))}

@@ -1,12 +1,31 @@
-import React from 'react'
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import React, { useEffect, useState } from 'react'
 
 const Applicanter = () => {
-  return (
-    <div>
-         <div>
-                <button type="button" className="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#myModal">
-                    Create Applicant
-                </button>
+    const [dataAppli, SetDataAppli] = useState([]);
+    var token = localStorage.getItem('token');
+    var jwt = jwtDecode(token);
+    const fetchdata = async () => {
+        try {
+            const res = await axios.get(`https://localhost:7144/api/Applicant/GetAllUser`)
+            console.log(res.data);
+            SetDataAppli(res.data.data);
+
+        } catch (error) {
+            console.error(error);
+
+        }
+    };
+    useEffect(() => {
+        fetchdata();
+    }, [])
+
+
+    return (
+        <div>
+            <div>
+              
                 {/* The Modal */}
                 <div className="modal" id="myModal">
                     <div className="modal-dialog">
@@ -26,7 +45,7 @@ const Applicanter = () => {
                                     <label className="RoEmployeeIdle">ApplicantName </label>
                                     <input type="text" className='form-control' id="RoEmployeeIdle" name='ApplicantName' />
                                     <label className="VacacyNumber">VacacyNumber</label>
-                                    <input type="text" className='form-control' id="VacacyNumber" name='VacacyNumber' />        
+                                    <input type="text" className='form-control' id="VacacyNumber" name='VacacyNumber' />
                                     <label className="ApplicantFile ">ApplicantFile </label>
                                     <input type="file" className='form-control' id="Title" name='ApplicantFile' />
                                     <label className="ApplicantEmail ">ApplicantEmail </label>
@@ -48,39 +67,29 @@ const Applicanter = () => {
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th scope="col">applicantID</th>
                         <th scope="col">ApplicationNumber</th>
-                        <th scope="col">CreationDate</th>
                         <th scope="col">ApplicantName</th>
-                        <th scope="col">VacacyNumber</th>  
-                        <th scope="col">ApplicantFile</th>
                         <th scope="col">ApplicantEmail</th>
-                        <th scope="col">ApplicantPhone</th>
-                        <th scope="col">Status</th>
-
+                        <th scope="col">CreationDate</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        
-                        <td>
-                            <button type='' className='btn btn-success '>Edit</button>
-                            <button type='' className='btn btn-danger'>Delete</button>
-
-                        </td>
-                    </tr>
+                    {dataAppli?.map((item, index) => (
+                        <tr key={index}>
+                            <th scope="row">{item.applicantID}</th>
+                            <td>{item.applicantNumber}</td>
+                            <td>{item.applicantName}</td>
+                            <td>{item.applicantEmail}</td>
+                            <td>{item.creationDate}</td>
+                        </tr>
+                    ))}
 
                 </tbody>
             </table>
-      
-    </div>
-  )
+
+        </div>
+    )
 }
 
 export default Applicanter

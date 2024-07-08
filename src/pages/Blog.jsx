@@ -8,8 +8,8 @@ const Blog = () => {
         <Banner/>
         
             <div className='container-fluid'>
+                
                 <BlogAsp />
-
             </div>
 
         </>

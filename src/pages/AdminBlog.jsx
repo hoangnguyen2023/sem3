@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import '../scss/blogdashboard.css'
 
+
 const AdminBlog = () => {
   const [getblog, setBlog] = useState([]);
   const [getemp, setEmp] = useState(null);
@@ -14,10 +15,10 @@ const AdminBlog = () => {
   const getuser = async () => {
     try {
       const res = await axios.get(
-        `https://localhost:7144/api/User/getuserbyid/${jwtuser.EmployeeNumber}`
+        `https://localhost:7144/api/Applicant/getuserbyid/${jwtuser.EmployeeNumber}`
       );
-      console.log(res.data);
-      setEmp(res.data);
+      console.log(res.data.data);
+      setEmp(res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -25,8 +26,12 @@ const AdminBlog = () => {
 
   const fetchBlog = async () => {
     try {
-      const res = await axios.get("https://localhost:7144/api/Blog/GetAllBlog");
-      setBlog(res.data);
+      if (jwtDecode.Roless === "Admin") {
+        const res = await axios.get("https://localhost:7144/api/Blog/GetAllBlog");
+        setBlog(res.data.data);
+      }
+      const res = await axios.get(`https://localhost:7144/api/Employee/List-Blog/${jwtuser.EmployeeNumber}`);
+      setBlog(res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -35,6 +40,7 @@ const AdminBlog = () => {
     fetchBlog();
     getuser();
   }, []);
+
   const handleCreate = async (e) => {
     e.preventDefault();
 
@@ -52,12 +58,12 @@ const AdminBlog = () => {
 
       const response = await axios.post(
         "https://localhost:7144/api/Blog/CreateBlog",
-        formData,{
-          headers: {
-            "Content-Type": "multipart/form-data",
-            'Authorization': `Bearer ${token}`,
-          }
+        formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          'Authorization': `Bearer ${token}`,
         }
+      }
       );
       console.log(response);
 
@@ -71,12 +77,12 @@ const AdminBlog = () => {
   const handleEdit = async (blog) => {
     console.log(blog)
     setEditBlog(blog);
-   
-  }; 
+
+  };
 
   const handleSaveEdit = async () => {
-    try{
-    
+    try {
+
       const employeeID = document.getElementById("EditEmployeeID").value;
       const title = document.getElementById("EditTitle").value;
       console.log(title)
@@ -85,57 +91,56 @@ const AdminBlog = () => {
       const avatarFile = document.getElementById("EditAvatar").files[0];
 
       const formData = new FormData();
-    //  formData.append("EditedAt",new Date())
+      //  formData.append("EditedAt",new Date())
       formData.append("EmployeeID", editBlog.employeeID);
       formData.append("BlogID", editBlog.blogID);
       formData.append("BlogNumber", editBlog.blogNumber);
       formData.append("Title", title);
       formData.append("Description", description);
-     formData.append("Avatar", avatarFile);
+      formData.append("Avatar", avatarFile);
       console.log(formData)
 
-      const res = await axios.post("https://localhost:7144/api/Blog/EditBlog",formData,{
-        headers:{
+      const res = await axios.post("https://localhost:7144/api/Blog/EditBlog", formData, {
+        headers: {
           "Content-Type": "multipart/form-data",
-          'Authorization':`Bearer ${token}`
+          'Authorization': `Bearer ${token}`
         },
       })
       console.log(res)
-     
+
       fetchBlog();
       setEditBlog(null);
     }
-    catch(error){
+    catch (error) {
       console.log(error)
     }
   }
 
-  const CloseFormEdit = () =>{
+  const CloseFormEdit = () => {
     setEditBlog(null)
   }
-  
-  const handleDelete = async (id)=>{
-   
-    try{
-      const res = await axios.delete(`https://localhost:7144/api/Blog/DeleteBlog/${id}`,{
-        headers:{
-          'Authorization':`Bearer ${token}`
+
+  const handleDelete = async (id) => {
+
+    try {
+      const res = await axios.delete(`https://localhost:7144/api/Blog/DeleteBlog/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
         },
       })
       await fetchBlog();
     }
-    catch(error){
+    catch (error) {
       console.error(error)
     }
   }
 
   function formatDate(dateString) {
     const date = new Date(dateString);
-    return `${date.getDate()}/${
-      date.getMonth() + 1
-    }/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+    return `${date.getDate()}/${date.getMonth() + 1
+      }/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
   }
-  
+
   return (
     <div>
       <div>
@@ -179,12 +184,13 @@ const AdminBlog = () => {
                     name="Title"
                   />
                   <label className="descriptions">Descriptions</label>
-                  <input
+                  {/* <input
                     type="text"
                     className="form-control"
                     id="Descriptions"
-                  />
-                  
+                  /> */}
+                  <textarea class="form-control" id="Descriptions" rows="3"></textarea>
+
                   <label className="image">Image</label>
                   <input type="file" className="form-control" id="Avatar" />
                 </form>
@@ -207,34 +213,34 @@ const AdminBlog = () => {
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">BlogId</th>
-            <th scope="col">BlogNumber</th>
-            <th scope="col">EmployeeID</th>
+            <th scope="col">Blog Number</th>
+            <th scope="col">Employee Number</th>
             <th scope="col">Title</th>
-            <th scope="col">Decriptions</th>
+
             <th scope="col">Image</th>
-            <th scope="col">Create Date</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          {getblog?.map((getblog, index) => (
+          {getblog && getblog.map((item, index) => (
             <tr key={index}>
-              <th scope="row">{getblog.blogID}</th>
-              <td>{getblog.blogNumber}</td>
-              <td>{getblog.employeeID}</td>
-              <td>{getblog.title}</td>
-              <td className="style">{getblog.description}</td>
-              <td>{getblog.image}</td>
-              <td>{formatDate(getblog.createdAt)}</td>
+              <td>{item.blogNumber}</td>
+              {jwtuser === "Admin" && (
+                <td>{item.employees.employeeNumber}</td>
+              )}
+              <td>{item.employees.employeeNumber}</td>
+              <td>{item.title}</td>
+
+              <td><img src={item.image} style={{ width: 50, height: 50 }} /></td>
+
               <td>
-                <button className="btn btn-success " onClick={() => handleDelete(getblog.blogID)}>Delete</button>
-                <button className="btn btn-danger"onClick={() => handleEdit(getblog)} >Edit</button>
+                <button className="btn btn-success " onClick={() => handleDelete(item.blogNumber)}>Delete</button>
+                <button className="btn btn-danger" onClick={() => handleEdit(item)} >Edit</button>
               </td>
             </tr>
           ))}
         </tbody>
-      
+
       </table>
 
       {editBlog && (
@@ -252,7 +258,7 @@ const AdminBlog = () => {
               </div>
               <div className="modal-body">
                 <form action="/submit-form" method="POST">
-                <label className="employeeID">BlogID</label>
+                  <label className="employeeID">BlogID</label>
                   <input
                     type="number"
                     className="form-control"
@@ -283,22 +289,22 @@ const AdminBlog = () => {
                     id="EditDescriptions"
                     defaultValue={editBlog.description}
                   />
-            
+
                   <label className="image">Image</label>
                   <input type="file" className="form-control" id="EditAvatar" />
                   <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  data-bs-dismiss="modal"
-                  onClick={handleSaveEdit}
-                >
-                  Save
-                </button>
-              </div>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      data-bs-dismiss="modal"
+                      onClick={handleSaveEdit}
+                    >
+                      Save
+                    </button>
+                  </div>
                 </form>
               </div>
-             
+
             </div>
           </div>
         </div>

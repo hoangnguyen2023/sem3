@@ -15,8 +15,8 @@ const Job = () => {
                 console.log("KK")
                 console.log(res);
                 
-                if (res && res.data) {
-                    setVacancies(res.data);
+                if (res && res.data.data) {
+                    setVacancies(res.data.data);
                 }
             }
             catch (error) {

@@ -16,6 +16,8 @@ const ProfileApplicants = () => {
       if (localStorage.getItem('token')) {
         try {
           const res=await axios.get(`https://localhost:7144/api/Applicant/Get/${user.email}`);
+
+          console.log("fjsdfjdsfsjdnfdks");
           console.log(res.data);
           setProfile(res.data)
           

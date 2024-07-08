@@ -1,0 +1,9 @@
+.inputpass{
+    position: relative;
+
+}
+.pass{
+    position: absolute;
+    top: 43px;
+    right: 15px;
+}

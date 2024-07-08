@@ -18,7 +18,6 @@ const JobFullStack = ({ id }) => {
     }
    
 
-
     const [jobview, setJobview] = useState(null);
     const [error, setError] = useState(null);
     const [load, setLoad] = useState(null)
@@ -51,13 +50,15 @@ const JobFullStack = ({ id }) => {
                     <h4 className='py-4'>{jobview.title}</h4>
                     <button className='btn btn-outline-secondary  ' style={{ borderRadius: "10px", marginRight: "5px" }}> <i className="fa-solid fa-location-dot "></i> Ho Chi Minh</button>
 
-                    <button className='btn btn-outline-secondary ' style={{ borderRadius: "10px" }}>Full time</button>
+                    <button className='btn btn-outline-secondary ' style={{ borderRadius: "10px" }}>{jobview.statusWork}</button>
                     <div className='row '>
                         <div className="col-sm-6">
                             <div className="card " style={{ border: "none" }}>
                                 <div className="card-body">
-                                <i class="fa-solid fa-calendar-days"></i><p>Create Day:{moment(jobview.createDate).format("DD/MM/YYYY HH:mm")}</p>
-                                <i class="fa-solid fa-calendar-days"></i><p>Close Day:{moment(jobview.closeDate).format("DD/MM/YYYY  HH:mm" )}</p>
+                                    <p> <i class="fa-solid fa-calendar-days"></i><span> Create Day: {moment(jobview.createDate).format("DD/MM/YYYY ")}</span></p>
+                                    <p>     <i class="fa-solid fa-calendar-days"></i><span> Close Day: {moment(jobview.closeDate).format("DD/MM/YYYY " )}</span></p>
+                               
+                           
 
                                     <h5 className="card-title">What you will do</h5>
                                     <p className="card-text">

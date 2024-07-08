@@ -10,7 +10,7 @@ import { Slide } from '../components/Slide';
 
 const data = [
     {
-        image: "https://localhost:7144/Blog/laravel_638551688228170870.jpg",
+        image: "https://picsum.photos/200/300?random=1",
         title: "ACB Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
@@ -19,7 +19,7 @@ const data = [
 
     },
     {
-        image: "https://localhost:7144/Blog/python_638551689057366661.jpg",
+        image: "https://picsum.photos/200/300/?random=1",
         title: "TP Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
@@ -27,7 +27,7 @@ const data = [
         navlin: "Click here"
     },
     {
-        image: "https://localhost:7144/Blog/C++_638551751092945080.jpg",
+        image: "https://picsum.photos/200/300/?random=12",
         title: "AnBinh Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
@@ -35,7 +35,7 @@ const data = [
         navlin: "Click here"
     },
     {
-        image: "https://localhost:7144/Blog/AI_638551754613333169.jpg",
+        image: "https://picsum.photos/200/300?random=1",
         title: "NamA Bank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",
@@ -43,7 +43,7 @@ const data = [
         navlin: "Click here"
     },
     {
-        image: "https://localhost:7144/Blog/Asp_638551752858439191.jpg",
+        image: "https://picsum.photos/200/300?random=1",
         title: "SacomBank",
 
         text: " Some quick example text to build on the card title and make up the bulk of the card's content",

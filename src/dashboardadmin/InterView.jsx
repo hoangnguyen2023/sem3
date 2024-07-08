@@ -1,7 +1,29 @@
-import React from 'react'
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import React, { useEffect, useState } from 'react'
+import moment from 'moment';
 
 
 const InterView = () => {
+  const [datainterview, setDatainterview] = useState([]);
+  const token = localStorage.getItem('token')
+  const decode = jwtDecode(token);
+  const getinterview = async () => {
+    try {
+      const res = await axios.get(`https://localhost:7144/api/Interview`);
+      console.log("afdsfndskjnf");
+      console.log(res.data);
+      setDatainterview(res.data)
+
+    } catch (error) {
+      console.error("not found data", error);
+
+    }
+  }
+  useEffect(()=>{
+    getinterview();
+  },[])
+
   return (
     <div>
       <div>
@@ -57,38 +79,64 @@ const InterView = () => {
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">InterviewId</th>
+            <th scope="col">InterviewID</th>
             <th scope="col">InterviewNumber</th>
             <th scope="col">VacancyID</th>
             <th scope="col">ScheduledDate</th>
             <th scope="col">CreateDay</th>
             <th scope="col">EndDay</th>
-            <th scope="col">EditDay</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
 
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Mark</td>
+     {/* {datainterview&&datainterview?.map((item,index)=>( */}
+      <tbody >
+      {datainterview&&datainterview.map((item,index)=>(
+      <tr key={index}>
+        <th scope="row">{item.interviewID}</th>
+        <td>{item.interviewNumber}</td>
+        <td>{item.vacancyID}</td>
+        <td> {moment(item.scheduleDate).format('DD/MM/YYYY HH:mm')}</td>
+        <td>{moment(item.createdAt).format('DD/MM/YYYY') }</td>
+        <td>{moment(item.endDate).format('DD/MM/YYYY') }</td>
+        <td>{item.status}</td>
 
-            <td>
-              <button className='btn btn-success '>Delete</button>
-              <button className='btn btn-danger'>Edit</button>
+        <td>
+          <button className='btn btn-success '>Delete</button>
+          <button type='button' className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#editInterview">Edit</button>
 
-            </td>
-          </tr>
+        </td>
+      </tr>
+ ))}
+    </tbody>
 
-        </tbody>
+    
+        
       </table>
+      <div>
+        {/* Button trigger modal */}
+
+        {/* Modal */}
+        <div className="modal fade" id="editInterview" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+              </div>
+              <div className="modal-body">
+                ...
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </div>
   )

@@ -3,22 +3,23 @@ import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 
 const Vacancies = () => {
-  const [vacacies, setvacancies] = useState([]);
+  const [vacacies, setvacancies] = useState([
+  ]);
   const [depart, setDepart] = useState([]);
   const [emp, setemp] = useState([]);
   const [editvacan, setEdit] = useState(null);
   const [onchange, setOnchange] = useState("");
 
-  var token = localStorage.getItem("token");    
+  var token = localStorage.getItem("token");
   var jwt = jwtDecode(token);
   const getuser = async () => {
     try {
       const res = await axios.get(
-        `https://localhost:7144/api/User/getuserbyid/${jwt.EmployeeNumber}`
+        `https://localhost:7144/api/Applicant/getuserbyid/${jwt.EmployeeNumber}`
       );
-     
-     
-      setemp(res.data);
+
+
+      setemp(res.data.data);
     } catch (error) {
       console.error(error);
     }
@@ -27,25 +28,24 @@ const Vacancies = () => {
   const fetchVacancy = async () => {
     try {
       const res = await axios.get(
-        `https://localhost:7144/api/Vacancy/GetAllVacancy`
+        `https://localhost:7144/api/Employee/List_Vacancy/${jwt.EmployeeNumber}`
       );
-      setvacancies(res.data);
-     
+      console.log(res.data.data)
+      setvacancies(res.data.data);
+
     } catch (error) {
       console.error(error);
     }
   };
 
   const fetchDepart = async () => {
-    try{
+    try {
       const res = await axios.get(`https://localhost:7144/api/Department`)
-     
-      console.log("AAAAAAAAAA")
       console.log(res.data)
-      setDepart(res.data)
-      
+      setDepart(res.data.data)
+
     }
-    catch(error){
+    catch (error) {
       console.error(error)
     }
   }
@@ -58,9 +58,9 @@ const Vacancies = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-     
+
       const depID = document.getElementById("DeparmentId").value;
-      const local = document.getElementById("Local").value;
+
       const statuswork = document.getElementById("StatusWork").value;
       const closedate = document.getElementById("CloseDate").value;
       const title = document.getElementById("Title").value;
@@ -68,10 +68,10 @@ const Vacancies = () => {
       const slot = document.getElementById("Slot").value;
 
       const formdata = new FormData();
-    
-      formdata.append("EmployeeID", parseInt(jwt.Id));
+
+      formdata.append("EmployeeID", emp.employeeID);
       formdata.append("DepartmentID", depID);
-      formdata.append("Local", local);
+
       formdata.append("StatusWork", statuswork);
       formdata.append("CloseDate", closedate);
       formdata.append("Title", title);
@@ -87,11 +87,8 @@ const Vacancies = () => {
           },
         }
       );
-      console.log(formdata)
-      if (response && response.data) {
-       
-      }
-      
+      console.log(response.data)
+
       fetchVacancy();
     } catch (error) {
       console.error(error);
@@ -102,56 +99,54 @@ const Vacancies = () => {
     setEdit(vacancy);
   };
 
-  const CloseFormEdit = async ()=>{
+  const CloseFormEdit = async () => {
     setEdit(null)
   }
 
   const handlechangedepart = (e) => {
     setOnchange(e.target.value);
-  
+
   };
 
-  const handleSaveEdit= async () => {
-    try{
+  const handleSaveEdit = async () => {
+    try {
       const status = document.getElementById("EditStatus").value;
       const closedate = document.getElementById("EditCloseDate").value;
       const slot = document.getElementById("EditSlot").value;
       const vacacyId = document.getElementById("vacacyId").value;
       const vacancyNumber = document.getElementById("vacancyNumber").value;
       const formData = new FormData();
-      formData.append('VacancyID',vacacyId)
-      formData.append('VacancyNumber',vacancyNumber)
-      formData.append("EmployeeID",editvacan.employeeID);
-      formData.append("DepartmentID",editvacan.departmentID);
-      formData.append("Local" , "HN" );
-      formData.append('Status',status)
-      formData.append("StatusWork",'Fulltime');
+      formData.append('VacancyID', vacacyId)
+      formData.append('VacancyNumber', vacancyNumber)
+      formData.append("EmployeeID", editvacan.employeeID);
+      formData.append("DepartmentID", editvacan.departmentID)
+      formData.append('Status', status)
+      formData.append("StatusWork", 'Fulltime');
       formData.append("CloseDate", closedate);
       formData.append("Title", "sssss");
-      formData.append("Description","Sssss");
+      formData.append("Description", "Sssss");
       formData.append("Slot", slot);
 
-       const res = await axios.post(`https://localhost:7144/api/Vacancy/EditVacancy`,formData,{
-            headers:{
-                'Authorization':`Bearer ${token} `
-            },
-        })
+      const res = await axios.post(`https://localhost:7144/api/Vacancy/EditVacancy`, formData, {
+        headers: {
+          'Authorization': `Bearer ${token} `
+        },
+      })
 
-        setEdit(null)
-        fetchVacancy();
-      
+      setEdit(null)
+      fetchVacancy();
+
     }
-    catch(error){
-        console.error(error)
+    catch (error) {
+      console.error(error)
     }
   }
   function formatDate(dateString) {
     const date = new Date(dateString);
-    return `${date.getDate()}/${
-      date.getMonth() + 1
-    }/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+    return `${date.getDate()}/${date.getMonth() + 1
+      }/${date.getFullYear()} `;
   }
- 
+
   return (
     <div>
       <div>
@@ -181,7 +176,7 @@ const Vacancies = () => {
                 <form action="">
                   <label className="DeparmentId">DeparmentId</label>
                   <div>
-                    <select id="DeparmentId" onChange={handlechangedepart}>
+                    <select id="DeparmentId" onChange={handlechangedepart} className="form-control">
                       {depart.length > 0 &&
                         depart.map((item, index) => (
                           <option key={index} value={item.departmentID}>
@@ -190,12 +185,6 @@ const Vacancies = () => {
                         ))}
                     </select>
                   </div>
-              
-                 
-                  {/* <label className="createdate">Create Date</label>
-                                    <input type="date" className='form-control' id="createdate" name='createdate' /> */}
-                  {/* <label className="Enddate">Close Date</label>
-                                    <input type="date" className='form-control' id="Local" name='Local' /> */}
                   <label className="CloseDate">Close Date</label>
                   <input
                     type="datetime-local"
@@ -203,23 +192,15 @@ const Vacancies = () => {
                     id="CloseDate"
                     name="CloseDate"
                   />
-                  <select
-                    id="Local"
-                    class="form-select form-select-sm mb-3"
-                    aria-label=".form-select-sm example"
-                  >
-                    <option selected>----Local----</option>
-                    <option value={"Ha Noi"}>Ha Noi</option>
-                    <option value={"HCM"}>HCM</option>
-                    <option value={"Da Nang"}>Da Nang</option>
-                  </select>
+                  <label htmlFor="">StatusWork</label>
+
                   <select
                     id="StatusWork"
-                    class="form-select form-select-sm mb-3"
+                    class="form-select form-select-md form-control"
                     aria-label=".form-select-sm example"
                   >
-                    <option selected>----Status work----</option>
-                    <option value={"fulltime"}>fulltime</option>
+
+                    <option value={"Fulltime"}>Fulltime</option>
                     <option value={"Parttime"}>Parttime</option>
                     <option value={"Freelance"}>Freelance</option>
                   </select>
@@ -231,12 +212,8 @@ const Vacancies = () => {
                     name="Title"
                   />
                   <label className="Decriptons">Decriptons</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="Decriptons"
-                    name="Decriptons"
-                  />
+
+                  <textarea class="form-control" id="Decriptons" rows="3"></textarea>
                   <label className="Slot">Slot</label>
                   <input
                     type="text"
@@ -264,37 +241,34 @@ const Vacancies = () => {
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">VacancyId</th>
-            <th scope="col">DeparmentId</th>
-            <th scope="col">EmployeeId</th>
-            <th scope="col">Local</th>
+            <th scope="col">Vacancy Number</th>
             <th scope="col">Create Date</th>
             <th scope="col">Close Date</th>
             <th scope="col">Edit Date</th>
             <th scope="col">Title</th>
-            <th scope="col">Decriptons</th>
+            <th scope="col">Status Work</th>
+
             <th scope="col">Slot</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
-          {vacacies?.map((vacacies, index) => (
+          {vacacies && vacacies.map((item, index) => (
             <tr key={index}>
-              <th scope="row">{vacacies.vacancyID}</th>
-              <td>{vacacies.departmentID}</td>
-              <td>{vacacies.employeeID}</td>
-              <td>{vacacies.local}</td>
-              <td>{formatDate(vacacies.createDate)}</td>
-              <td>{formatDate(vacacies.closeDate)}</td>
-              <td>{formatDate(vacacies.editedAt)}</td>
-              <td>{vacacies.title}</td>
-              <td>{vacacies.decription}</td>
-              <td>{vacacies.slot}</td>
-              <td>{vacacies.status}</td>
+              <th scope="row">{item.vacancyNumber}</th>
+              <td>{formatDate(item.createdAt)}</td>
+              <td>{formatDate(item.closeDate)}</td>
+              <td>{formatDate(item.editedAt)}</td>
+              <td>{item.title}</td>
+              <td>{item.statusWork}</td>
+
+              <td>{item.slot}</td>
+              <td>{item.status}</td>
               <td>
                 <button
+                  // disabled={vacacies.status==="Close"?true:false}
                   className="btn btn-danger"
-                  onClick={() => handleEdit(vacacies)}
+                  onClick={() => handleEdit(item)}
                 >
                   Edit
                 </button>
@@ -319,12 +293,12 @@ const Vacancies = () => {
               <div className="modal-body">
                 <form action="/submit-form" method="POST">
                   <label className="status">Status</label>
-                 <div>
-                  <select id="EditStatus">
-                    <option value={"Close"}>Close</option>
-                     <option  value={"Cancle"}>Cancle</option>
-                  </select>
-                 </div>
+                  <div>
+                    <select id="EditStatus">
+                      <option value={"Close"}>Close</option>
+                      <option value={"Cancle"}>Cancel</option>
+                    </select>
+                  </div>
                   <label className="slot">Slot</label>
                   <input
                     type="number"
@@ -339,11 +313,11 @@ const Vacancies = () => {
                     className="form-control"
                     id="EditCloseDate"
                     name="EditCloseDate"
-                    defaultValue={editvacan.title}
+                    defaultValue={editvacan.closeDate}
                   />
                   <input
                     type="hidden"
-                  
+
                     id="vacancyNumber"
                     name="vacancyNumber"
                     defaultValue={editvacan.vacancyNumber}
@@ -358,7 +332,7 @@ const Vacancies = () => {
                       Save
                     </button>
                   </div>
-                  <input hidden id="vacacyId"  defaultValue={editvacan.vacancyID} />
+                  <input hidden id="vacacyId" defaultValue={editvacan.vacancyID} />
                 </form>
               </div>
             </div>

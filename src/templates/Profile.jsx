@@ -68,14 +68,14 @@ const Profile = () => {
             {/* <canvas className="my-4 w-100" id="myChart" width={900} height={380} /> */}
             <h2>InFomations </h2>
             <div className="table-responsive">
-           
+
               <Outlet />
 
             </div>
           </main>
         </div>
       </div>
-      <Backtotop/>
+      <Backtotop />
       {/* <Footer/> */}
 
     </div>

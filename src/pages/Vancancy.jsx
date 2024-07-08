@@ -1,16 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {jwtDecode} from 'jwt-decode'
-
+import moment from 'moment';
 const Vancancy = () => {
-    const [vacanies,setVacancies]=useState([]);
+    const [data,setdata]=useState([]);
     var token=localStorage.getItem('token');
     var  jwt=jwtDecode(token)
     const fetchvacncies=async()=>{
         try{
-            const res=await axios.get(`https://localhost:7144/api/ApplyAction/getapplicanemail/${jwt.email}`);
-            console.log(res.data);
-            setVacancies(res.data)
+            const res=await axios.get(`https://localhost:7144/api/ApplyAction/List_Apply_Action/${jwt.email}`);
+            console.log(res.data.data);
+            setdata(res.data.data)
 
         }catch(error){
             console.log(error);
@@ -32,22 +32,22 @@ const Vancancy = () => {
                         <th scope="col">Birthday</th>
                         <th scope="col">Phonenumber</th>
                         <th scope="col">FileCV</th>
-                        <th scope="col">Description</th>
+                      
                         <th scope="col">Status</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    {vacanies?.map((vacanies, index) => (
+                    {data?.map((item, index) => (
                         <tr key={index}>
-                            <th scope="row">{vacanies.applyID}</th>
-                            <td>{vacanies.fullname}</td>
-                            <td >{vacanies.email}</td>
-                            <td>{vacanies.birthday}</td>
-                            <td>{vacanies.phonenumber}</td>
-                            <td ><a target='blank' className='filecv' href={vacanies.fileCV}>{vacanies.fileCV}</a></td>
-                            <td>{vacanies.description}</td>
-                            <td>{vacanies.status}</td>
+                            <th scope="row">{item.applyID}</th>
+                            <td>{item.applyName}</td>
+                            <td >{item.applyEmail}</td>
+                            <td>{moment(item.birthday).format("DD/MM/YYYY")}</td>
+                            <td>{item.applyPhone}</td>
+                            <td ><a target='blank' className='filecv' href={item.fileCV}>{item.fileCV}</a></td>
+                          
+                            <td>{item.status}</td>
 
                             {/* <td>
                                 <button onClick={() => handleChangeStatus({ status: "Hired", id: applyaction.applyID })} className='btn btn-danger'>Hired</button>

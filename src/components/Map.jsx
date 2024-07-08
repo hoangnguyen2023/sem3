@@ -3,7 +3,7 @@ import React from 'react'
 const Map = () => {
     return (
         <div className='container-fluid mb-5'>
-            <h5 className='text-center my-5'>About Us </h5>
+    
            
             <div className="row">
                 <div className="col-sm-6">
